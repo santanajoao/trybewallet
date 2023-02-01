@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchCurrencies } from '../redux/actions';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
 
 class WalletForm extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchCurrencies());
+  }
+
   render() {
+    const { currencies } = this.props;
     return (
       <form className="WalletForm">
         <label htmlFor="value-input">
@@ -34,13 +43,15 @@ class WalletForm extends Component {
             id="currency-input"
             data-testid="currency-input"
           >
-            {/* // implementar */}
+            { currencies.map((currency, index) => (
+              <option key={ index } value={ currency }>{ currency }</option>
+            )) }
           </select>
         </label>
 
         <label htmlFor="method-input">
           Método de pagamento
-          <select name="method" id="method-input">
+          <select name="method" id="method-input" data-testid="method-input">
             { methods.map((method, index) => (
               <option key={ index } value={ method }>{ method }</option>
             )) }
@@ -49,7 +60,7 @@ class WalletForm extends Component {
 
         <label htmlFor="tag-input">
           Categoria
-          <select name="tag" id="tag-input">
+          <select name="tag" id="tag-input" data-testid="tag-input">
             { categories.map((category, index) => (
               <option key={ index } value={ category }>{ category }</option>
             )) }
@@ -60,4 +71,13 @@ class WalletForm extends Component {
   }
 }
 
-export default WalletForm;
+WalletForm.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+const mapStateToProps = ({ wallet }) => ({
+  currencies: wallet.currencies,
+});
+
+export default connect(mapStateToProps)(WalletForm);
