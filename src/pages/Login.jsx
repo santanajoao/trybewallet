@@ -16,6 +16,12 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const { dispatch, history } = this.props;
+    const { email } = this.state;
+    dispatch(login(email));
+
+    history.push('/carteira');
   };
 
   areFieldsInvalid = () => {
@@ -28,7 +34,6 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { dispatch } = this.props;
     return (
       <div className="Login">
         <form onSubmit={ this.handleSubmit } className="Login__form">
@@ -50,7 +55,7 @@ class Login extends Component {
           />
           <button
             type="submit"
-            onClick={ () => dispatch(login(email)) }
+            onClick={ this.handleSubmit }
             disabled={ this.areFieldsInvalid() }
           >
             Entrar
@@ -63,6 +68,9 @@ class Login extends Component {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect()(Login);
