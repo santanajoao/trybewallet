@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../redux/actions';
 
 class Login extends Component {
   state = {
@@ -25,6 +27,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { dispatch } = this.props;
     return (
       <div className="Login">
         <form onSubmit={ this.handleSubmit } className="Login__form">
@@ -44,7 +47,11 @@ class Login extends Component {
             name="password"
             data-testid="password-input"
           />
-          <button type="submit" disabled={ this.areFieldsInvalid() }>
+          <button
+            type="submit"
+            onClick={ () => dispatch(login(email)) }
+            disabled={ this.areFieldsInvalid() }
+          >
             Entrar
           </button>
         </form>
@@ -53,4 +60,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect()(Login);
