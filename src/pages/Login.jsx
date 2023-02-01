@@ -9,9 +9,8 @@ class Login extends Component {
     password: '',
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
   };
 
   handleSubmit = (event) => {
