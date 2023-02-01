@@ -66,6 +66,10 @@ class WalletForm extends Component {
             )) }
           </select>
         </label>
+
+        <button>
+          Adicionar despesa
+        </button>
       </form>
     );
   }
