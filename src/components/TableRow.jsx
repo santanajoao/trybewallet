@@ -25,6 +25,9 @@ export default class TableRow extends Component {
         <td>{ this.formatNumericValue(ask) }</td>
         <td>{ this.formatNumericValue(convertedValue) }</td>
         <td>Real</td>
+        <td>
+          <button type="button" data-testid="delete-btn">Excluir</button>
+        </td>
       </tr>
     );
   }
