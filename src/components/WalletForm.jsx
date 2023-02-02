@@ -38,9 +38,7 @@ class WalletForm extends Component {
     const { dispatch } = this.props;
     dispatch(createExpense(this.state));
 
-    this.setState(({ id }) => ({
-      ...INITIAL_STATE, id: id + 1,
-    }));
+    this.setState(({ id }) => ({ ...INITIAL_STATE, id: id + 1 }));
   };
 
   render() {
