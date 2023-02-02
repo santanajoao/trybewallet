@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import App from '../App';
 
-describe('App', () => {
+describe('Login', () => {
   it('a página inicial renderiza um formulário de login', () => {
     renderWithRouterAndRedux(<App />);
 
