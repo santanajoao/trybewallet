@@ -29,6 +29,13 @@ export default class TableRow extends Component {
         <td>
           <button
             type="button"
+            data-testid="edit-btn"
+          >
+            Editar
+          </button>
+
+          <button
+            type="button"
             onClick={ () => dispatch(deleteExpense(id)) }
             data-testid="delete-btn"
           >
