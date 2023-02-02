@@ -7,6 +7,7 @@ export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 export const START_EDITION = 'START_EDITION';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const login = (email) => ({
   type: LOGIN,
@@ -49,4 +50,9 @@ export const deleteExpense = (id) => ({
 export const startEdition = (id) => ({
   type: START_EDITION,
   payload: id,
+});
+
+export const editExpense = (editions) => ({
+  type: EDIT_EXPENSE,
+  payload: editions,
 });

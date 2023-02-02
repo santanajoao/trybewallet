@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrencies, createExpense } from '../redux/actions';
+import { getCurrencies, createExpense, editExpense } from '../redux/actions';
 import LabelAndInput from './LabelAndInput';
 import LabelAndSelect from './LabelAndSelect';
 
@@ -35,10 +35,15 @@ class WalletForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { dispatch } = this.props;
-    dispatch(createExpense(this.state));
+    const { dispatch, editor } = this.props;
 
-    this.setState(({ id }) => ({ ...INITIAL_STATE, id: id + 1 }));
+    if (editor) {
+      dispatch(editExpense(this.state));
+      this.setState(INITIAL_STATE);
+    } else {
+      dispatch(createExpense(this.state));
+      this.setState(({ id }) => ({ ...INITIAL_STATE, id: id + 1 }));
+    }
   };
 
   render() {
