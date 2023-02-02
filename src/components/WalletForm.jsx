@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrencies } from '../redux/actions';
+import { getCurrencies, createExpense } from '../redux/actions';
 import LabelAndInput from './LabelAndInput';
 import LabelAndSelect from './LabelAndSelect';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
 
+const INITIAL_STATE = {
+  value: '',
+  description: '',
+  currency: 'USD',
+  method: 'Dinheiro',
+  tag: 'Alimentação',
+};
+
 class WalletForm extends Component {
   state = {
-    value: '',
-    description: '',
-    currency: 'USD',
-    method: 'Dinheiro',
-    tag: 'Alimentação',
+    ...INITIAL_STATE,
+    id: 0,
   };
 
   componentDidMount() {
@@ -29,6 +34,13 @@ class WalletForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const { dispatch } = this.props;
+    dispatch(createExpense(this.state));
+
+    this.setState(({ id }) => ({
+      ...INITIAL_STATE, id: id + 1,
+    }));
   };
 
   render() {
