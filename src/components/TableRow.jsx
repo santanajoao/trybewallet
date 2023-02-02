@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { deleteExpense } from '../redux/actions';
+import { deleteExpense, startEdition } from '../redux/actions';
 
 export default class TableRow extends Component {
   formatNumericValue = (value) => {
@@ -29,6 +29,7 @@ export default class TableRow extends Component {
         <td>
           <button
             type="button"
+            onClick={ () => dispatch(startEdition(id)) }
             data-testid="edit-btn"
           >
             Editar
