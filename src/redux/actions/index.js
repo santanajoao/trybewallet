@@ -31,10 +31,10 @@ export const addExpense = (expenseInfosObject) => ({
 export const createExpense = (expenseInfosObject) => (
   async (dispatch) => {
     const currenciesList = await fetchCurrenciesObject();
-    const newExpenseInfosObject = {
+    const expenseInfosAndExchangeRatesObject = {
       ...expenseInfosObject,
       exchangeRates: currenciesList,
     };
-    dispatch(addExpense(newExpenseInfosObject));
+    dispatch(addExpense(expenseInfosAndExchangeRatesObject));
   }
 );
