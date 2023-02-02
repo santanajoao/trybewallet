@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { deleteExpense } from '../redux/actions';
 
 export default class TableRow extends Component {
   formatNumericValue = (value) => {
@@ -8,9 +9,9 @@ export default class TableRow extends Component {
   };
 
   render() {
-    const { expense } = this.props;
+    const { expense, dispatch } = this.props;
     const {
-      exchangeRates, currency, value, description, tag, method,
+      exchangeRates, currency, value, description, tag, method, id,
     } = expense;
 
     const { ask, name } = exchangeRates[currency];
@@ -26,7 +27,13 @@ export default class TableRow extends Component {
         <td>{ this.formatNumericValue(convertedValue) }</td>
         <td>Real</td>
         <td>
-          <button type="button" data-testid="delete-btn">Excluir</button>
+          <button
+            type="button"
+            onClick={ () => dispatch(deleteExpense(id)) }
+            data-testid="delete-btn"
+          >
+            Excluir
+          </button>
         </td>
       </tr>
     );
@@ -46,5 +53,7 @@ TableRow.propTypes = {
     description: PropTypes.string,
     tag: PropTypes.string,
     method: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
