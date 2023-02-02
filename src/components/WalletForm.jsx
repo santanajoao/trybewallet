@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrencies } from '../redux/actions';
 import LabelAndInput from './LabelAndInput';
+import LabelAndSelect from './LabelAndSelect';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
@@ -51,50 +52,29 @@ class WalletForm extends Component {
           onChange={ this.handleChange }
         />
 
-        <label htmlFor="currency-input">
-          Moeda
-          <select
-            value={ currency }
-            onChange={ this.handleChange }
-            name="currency"
-            id="currency-input"
-            data-testid="currency-input"
-          >
-            { currencies.map((_currency, index) => (
-              <option key={ index } value={ _currency }>{ _currency }</option>
-            )) }
-          </select>
-        </label>
+        <LabelAndSelect
+          name="currency"
+          labelText="Moeda"
+          value={ currency }
+          onChange={ this.handleChange }
+          options={ currencies }
+        />
 
-        <label htmlFor="method-input">
-          Método de pagamento
-          <select
-            value={ method }
-            onChange={ this.handleChange }
-            name="method"
-            id="method-input"
-            data-testid="method-input"
-          >
-            { methods.map((_method, index) => (
-              <option key={ index } value={ _method }>{ _method }</option>
-            )) }
-          </select>
-        </label>
+        <LabelAndSelect
+          name="method"
+          labelText="Método de pagamento"
+          value={ method }
+          onChange={ this.handleChange }
+          options={ methods }
+        />
 
-        <label htmlFor="tag-input">
-          Categoria
-          <select
-            value={ tag }
-            onChange={ this.handleChange }
-            name="tag"
-            id="tag-input"
-            data-testid="tag-input"
-          >
-            { categories.map((category, index) => (
-              <option key={ index } value={ category }>{ category }</option>
-            )) }
-          </select>
-        </label>
+        <LabelAndSelect
+          name="tag"
+          labelText="Categoria"
+          value={ tag }
+          onChange={ this.handleChange }
+          options={ categories }
+        />
 
         <button type="submit">
           Adicionar despesa
