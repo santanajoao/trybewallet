@@ -1,4 +1,6 @@
-import fetchCurrencies from '../../services/currenciesAPI';
+import {
+  fetchCurrenciesList, fetchCurrenciesObject,
+} from '../../services/currenciesAPI';
 
 export const LOGIN = 'LOGIN';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
@@ -9,14 +11,30 @@ export const login = (email) => ({
   payload: email,
 });
 
-export const setCurrencies = (currencies) => ({
+export const setCurrencies = (currenciesList) => ({
   type: SET_CURRENCIES,
-  payload: currencies,
+  payload: currenciesList,
 });
 
 export const getCurrencies = () => (
   async (dispatch) => {
-    const currencies = await fetchCurrencies();
-    dispatch(setCurrencies(currencies));
+    const currenciesList = await fetchCurrenciesList();
+    dispatch(setCurrencies(currenciesList));
+  }
+);
+
+export const addExpense = (expenseInfosObject) => ({
+  type: ADD_EXPENSE,
+  payload: expenseInfosObject,
+});
+
+export const createExpense = (expenseInfosObject) => (
+  async (dispatch) => {
+    const currenciesList = await fetchCurrenciesObject();
+    const newExpenseInfosObject = {
+      ...expenseInfosObject,
+      exchangeRates: currenciesList,
+    };
+    dispatch(addExpense(newExpenseInfosObject));
   }
 );
