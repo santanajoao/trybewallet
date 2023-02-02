@@ -8,7 +8,6 @@ export const fetchCurrenciesObject = async () => {
 
 export const fetchCurrenciesList = async () => {
   const currenciesObject = await fetchCurrenciesObject();
-  const currenciesList = Object.values(currenciesObject);
-  const currenciesAbbreviationsList = currenciesList.map(({ code }) => code);
+  const currenciesAbbreviationsList = Object.keys(currenciesObject);
   return currenciesAbbreviationsList;
 };
