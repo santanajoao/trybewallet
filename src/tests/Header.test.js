@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
@@ -43,6 +43,8 @@ describe('Header', () => {
       userEvent.click(screen.getByRole('button', { name: 'Adicionar despesa' }));
     });
 
-    await screen.findByText('4.75');
+    await waitFor(() => {
+      expect(screen.getByTestId('total-field')).toHaveTextContent('4.75');
+    });
   });
 });
