@@ -1,3 +1,5 @@
+import fetchCurrencies from '../../services/currenciesAPI';
+
 export const LOGIN = 'LOGIN';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
@@ -12,13 +14,9 @@ export const setCurrencies = (currencies) => ({
   payload: currencies,
 });
 
-export const fetchCurrencies = () => (
+export const getCurrencies = () => (
   async (dispatch) => {
-    const endpoint = 'https://economia.awesomeapi.com.br/json/all';
-    const response = await fetch(endpoint);
-    const dataArray = Object.values(await response.json());
-    const filteredData = dataArray.filter(({ codein }) => codein !== 'BRLT');
-    const currencies = filteredData.map(({ code }) => code);
+    const currencies = await fetchCurrencies();
     dispatch(setCurrencies(currencies));
   }
 );

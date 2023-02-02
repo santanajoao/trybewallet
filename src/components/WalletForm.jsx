@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCurrencies } from '../redux/actions';
+import { getCurrencies } from '../redux/actions';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
@@ -9,7 +9,7 @@ const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'
 class WalletForm extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCurrencies());
+    dispatch(getCurrencies());
   }
 
   render() {
