@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrencies } from '../redux/actions';
+import LabelAndInput from './LabelAndInput';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
@@ -25,34 +26,30 @@ class WalletForm extends Component {
     this.setState({ [name]: value });
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   render() {
     const { value, description, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
-      <form className="WalletForm">
-        <label htmlFor="value-input">
-          Valor
-          <input
-            value={ value }
-            type="number"
-            onChange={ this.handleChange }
-            name="value"
-            id="value-input"
-            data-testid="value-input"
-          />
-        </label>
+      <form onSubmit={ this.handleSubmit } className="WalletForm">
+        <LabelAndInput
+          name="value"
+          labelText="Valor"
+          value={ value }
+          type="number"
+          onChange={ this.handleChange }
+        />
 
-        <label htmlFor="description-input">
-          Descrição
-          <input
-            value={ description }
-            type="text"
-            onChange={ this.handleChange }
-            name="description"
-            id="description-input"
-            data-testid="description-input"
-          />
-        </label>
+        <LabelAndInput
+          name="description"
+          labelText="Descrição"
+          value={ description }
+          type="text"
+          onChange={ this.handleChange }
+        />
 
         <label htmlFor="currency-input">
           Moeda
@@ -99,7 +96,7 @@ class WalletForm extends Component {
           </select>
         </label>
 
-        <button>
+        <button type="submit">
           Adicionar despesa
         </button>
       </form>
