@@ -1,4 +1,6 @@
-import { SET_CURRENCIES, ADD_EXPENSE, DELETE_EXPENSE } from '../actions';
+import {
+  SET_CURRENCIES, ADD_EXPENSE, DELETE_EXPENSE, START_EDITION,
+} from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -23,6 +25,12 @@ const walletReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter(({ id }) => id !== action.payload),
+    };
+  case START_EDITION:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
     };
   default:
     return state;
