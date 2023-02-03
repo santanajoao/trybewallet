@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { deleteExpense, startEdition } from '../redux/actions';
 
-export default class TableRow extends Component {
+class TableRow extends Component {
   formatNumericValue = (value) => {
     const numberValue = Number(value);
     return numberValue.toFixed(2);
@@ -65,3 +66,5 @@ TableRow.propTypes = {
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
 };
+
+export default connect()(TableRow);
