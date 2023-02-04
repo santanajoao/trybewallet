@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../redux/actions';
+import trybeWalletLogo from '../assets/logo-trybewallet.svg';
+import '../styles/Login.css';
 
 class Login extends Component {
   state = {
@@ -34,31 +36,41 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="Login">
-        <form onSubmit={ this.handleSubmit } className="Login__form">
-          <input
-            value={ email }
-            type="email"
-            placeholder="E-mail"
-            onChange={ this.handleChange }
-            name="email"
-            data-testid="email-input"
+      <div className="login-page">
+        <div className="login-form-and-logo-wrapper">
+          <img
+            src={ trybeWalletLogo }
+            className="login-logo"
+            alt="TrybeWallet logo"
           />
-          <input
-            value={ password }
-            type="password"
-            placeholder="Senha"
-            onChange={ this.handleChange }
-            name="password"
-            data-testid="password-input"
-          />
-          <button
-            type="submit"
-            disabled={ this.areFieldsInvalid() }
-          >
-            Entrar
-          </button>
-        </form>
+          <form onSubmit={ this.handleSubmit } className="login-form">
+            <input
+              value={ email }
+              type="email"
+              placeholder="E-mail"
+              onChange={ this.handleChange }
+              name="email"
+              data-testid="email-input"
+              className="login-input"
+            />
+            <input
+              value={ password }
+              type="password"
+              placeholder="Senha"
+              onChange={ this.handleChange }
+              name="password"
+              data-testid="password-input"
+              className="login-input"
+            />
+            <button
+              type="submit"
+              disabled={ this.areFieldsInvalid() }
+              className="login-button"
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
