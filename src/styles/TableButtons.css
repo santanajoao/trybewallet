@@ -1,0 +1,17 @@
+.table-btn {
+  border: none;
+  background-color: transparent;
+  margin: auto 0.5rem;
+}
+
+.delete-icon {
+  width: 0.625rem;
+  height: 0.875rem;
+  cursor: pointer;
+}
+
+.edit-icon {
+  width: 0.957rem;
+  height: 0.85rem;
+  cursor: pointer;
+}

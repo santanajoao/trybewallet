@@ -24,13 +24,13 @@ class TableRow extends Component {
       name, formatedAsk, convertedValue, 'Real',
     ];
     return (
-      <tr>
+      <tr className="table-row">
         { rowContent.map((cellContent, index) => (
-          <td key={ index } className="table-row-cell">
+          <td key={ index }>
             { cellContent }
           </td>
         )) }
-        <td className="table-row-cell">
+        <td className="buttons-cell">
           <TableButtons expenseID={ expense.id } />
         </td>
       </tr>
