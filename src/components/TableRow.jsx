@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { deleteExpense, startEdition } from '../redux/actions';
-import Button from './Button';
+import TableButtons from './TableButtons';
 
 class TableRow extends Component {
   formatNumericValue = (value) => {
@@ -12,7 +11,7 @@ class TableRow extends Component {
   render() {
     const { expense } = this.props;
     const {
-      exchangeRates, currency, value, description, tag, method, id,
+      exchangeRates, currency, value, description, tag, method,
     } = expense;
 
     const { ask, name } = exchangeRates[currency];
@@ -20,25 +19,19 @@ class TableRow extends Component {
     const formatedValue = this.formatNumericValue(value);
     const formatedAsk = this.formatNumericValue(ask);
 
-    const rowData = [
+    const rowContent = [
       description, tag, method, formatedValue,
       name, formatedAsk, convertedValue, 'Real',
     ];
     return (
       <tr>
-        { rowData.map((data, index) => (
-          <td key={ index } className="table-row-data">
-            { data }
+        { rowContent.map((cellContent, index) => (
+          <td key={ index } className="table-row-cell">
+            { cellContent }
           </td>
         )) }
-        <td>
-          <Button testid="edit-btn" actionCreator={ () => startEdition(id) }>
-            Editar
-          </Button>
-
-          <Button testid="delete-btn" actionCreator={ () => deleteExpense(id) }>
-            Excluir
-          </Button>
+        <td className="table-row-cell">
+          <TableButtons expenseID={ expense.id } />
         </td>
       </tr>
     );
