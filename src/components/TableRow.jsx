@@ -16,17 +16,21 @@ class TableRow extends Component {
     } = expense;
 
     const { ask, name } = exchangeRates[currency];
-    const convertedValue = value * ask;
+    const convertedValue = this.formatNumericValue(value * ask);
+    const formatedValue = this.formatNumericValue(value);
+    const formatedAsk = this.formatNumericValue(ask);
+
+    const rowData = [
+      description, tag, method, formatedValue,
+      name, formatedAsk, convertedValue, 'Real',
+    ];
     return (
       <tr>
-        <td>{ description }</td>
-        <td>{ tag }</td>
-        <td>{ method }</td>
-        <td>{ this.formatNumericValue(value) }</td>
-        <td>{ name }</td>
-        <td>{ this.formatNumericValue(ask) }</td>
-        <td>{ this.formatNumericValue(convertedValue) }</td>
-        <td>Real</td>
+        { rowData.map((data, index) => (
+          <td key={ index } className="table-row-data">
+            { data }
+          </td>
+        )) }
         <td>
           <Button testid="edit-btn" actionCreator={ () => startEdition(id) }>
             Editar
