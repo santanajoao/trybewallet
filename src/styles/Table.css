@@ -2,7 +2,8 @@
   width: 90.23%;
   background-color: #003BE5;
   border-collapse: collapse;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 3rem;
 }
 
 .table tr {

@@ -1,6 +1,6 @@
 .wallet-page {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: #2FC18C;
   background-image: url('../assets//bg-image.svg');
   background-size: cover;

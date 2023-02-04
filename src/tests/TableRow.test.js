@@ -27,7 +27,7 @@ describe('TableRow', () => {
     userEvent.type(screen.getByRole('textbox'), 'joao123@gmail.com');
     userEvent.type(screen.getByPlaceholderText('Senha'), '123456');
     userEvent.click(screen.getByRole('button', { name: 'Entrar' }));
-    userEvent.type(screen.getByRole('textbox', { name: 'Descrição' }), description);
+    userEvent.type(screen.getByRole('textbox', { name: 'Descrição da despesa' }), description);
 
     userEvent.click(screen.getByRole('button', { name: 'Adicionar despesa' }));
 
