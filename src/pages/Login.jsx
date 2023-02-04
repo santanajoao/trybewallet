@@ -11,16 +11,21 @@ class Login extends Component {
     password: '',
   };
 
-  handleChange = ({ target }) => {
+  handleInputChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
 
-  handleSubmit = (event) => {
+  loginWithEmail = (email) => {
+    const { dispatch } = this.props;
+    dispatch(login(email));
+  };
+
+  handleLogin = (event) => {
     event.preventDefault();
 
-    const { dispatch, history } = this.props;
+    const { history } = this.props;
     const { email } = this.state;
-    dispatch(login(email));
+    this.loginWithEmail(email);
 
     history.push('/carteira');
   };
@@ -28,6 +33,7 @@ class Login extends Component {
   areFieldsInvalid = () => {
     const { email, password } = this.state;
     const passwordMinLength = 6;
+
     const invalidEmail = !/[\w\d]+@[\w\d]+\.com/.test(email);
     const invalidPassword = password.length < passwordMinLength;
     return invalidEmail || invalidPassword;
@@ -43,12 +49,12 @@ class Login extends Component {
             className="login-logo"
             alt="TrybeWallet logo"
           />
-          <form onSubmit={ this.handleSubmit } className="login-form">
+          <form onSubmit={ this.handleLogin } className="login-form">
             <input
               value={ email }
               type="email"
               placeholder="E-mail"
-              onChange={ this.handleChange }
+              onChange={ this.handleInputChange }
               name="email"
               data-testid="email-input"
               className="login-input"
@@ -57,7 +63,7 @@ class Login extends Component {
               value={ password }
               type="password"
               placeholder="Senha"
-              onChange={ this.handleChange }
+              onChange={ this.handleInputChange }
               name="password"
               data-testid="password-input"
               className="login-input"
