@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import trybeWalletLogo from '../assets/logo-trybewallet.svg';
+import coinsIcon from '../assets/coins-icon.svg';
+import profileIcon from '../assets/profile-icon.svg';
+import '../styles/Header.css';
 
 class Header extends Component {
   getTotalConverted = () => {
@@ -19,33 +23,52 @@ class Header extends Component {
   render() {
     const { email } = this.props;
     return (
-      <div className="Header">
-        <div className="Header-expense-container">
-          <p className="Header-expense">
+      <header className="header">
+        <img
+          src={ trybeWalletLogo }
+          className="header-trybewallet-logo"
+          alt="Ícone da TrybeWallet"
+        />
+
+        <div className="header-expense-wrapper">
+          <img
+            src={ coinsIcon }
+            className="header-expense-icon"
+            alt="Ícone de moedas"
+          />
+
+          <p className="header-expense-text">
             Total de despesas:
+
             &nbsp;
             <span
               data-testid="total-field"
-              className="Header-expense-value"
+              className="header-expense-value"
             >
               { this.getTotalConverted() }
             </span>
+
             &nbsp;
             <span
               data-testid="header-currency-field"
-              className="Header-expense-currency"
+              className="header-expense-currency"
             >
               BRL
             </span>
           </p>
         </div>
 
-        <div className="Header-email-container">
-          <span data-testid="email-field" className="Header-email">
+        <div className="header-email-wrapper">
+          <img
+            src={ profileIcon }
+            className="header-email-icon"
+            alt="Ícone de perfil"
+          />
+          <span data-testid="email-field" className="header-email">
             { email }
           </span>
         </div>
-      </div>
+      </header>
     );
   }
 }

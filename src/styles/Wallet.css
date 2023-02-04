@@ -4,4 +4,7 @@
   background-color: #2FC18C;
   background-image: url('../assets//bg-image.svg');
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

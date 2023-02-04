@@ -2,7 +2,6 @@
   --login-blue: #003BE5;
   --login-green: #2FC18C;
   --form-font-size: 0.875rem;
-  --form-items-padding: 0.688rem;
 }
 
 .login-page {
@@ -24,7 +23,7 @@
   flex-direction: column;
   gap: 2.6rem;
   justify-content: center;
-  height: 22.25rem;
+  height: 22.26rem;
   width: 32.812rem;
 }
 
@@ -44,7 +43,7 @@
   border-radius: 5px;
   font-size: var(--login-font-size);
   font-weight: 400;
-  padding: var(--form-items-padding);
+  padding: 0.657rem;
   width: 20.625rem;
 }
 
@@ -69,7 +68,7 @@
   cursor: pointer;
   font-size: var(--login-font-size);
   font-weight: 700;
-  padding: var(--form-items-padding);
+  padding: 0.719rem;
   width: 20.625rem;
 }
 
