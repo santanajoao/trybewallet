@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/LabelAndInput.css';
 
 export default class LabelAndInput extends Component {
   render() {
     const { name, labelText, value, type, onChange } = this.props;
     const inputID = `${name}-input`;
     return (
-      <label htmlFor={ inputID }>
+      <label htmlFor={ inputID } className="label-and-input-label">
         { labelText }
         <input
           value={ value }
@@ -15,6 +16,7 @@ export default class LabelAndInput extends Component {
           name={ name }
           id={ inputID }
           data-testid={ inputID }
+          className="label-and-input-input"
         />
       </label>
     );

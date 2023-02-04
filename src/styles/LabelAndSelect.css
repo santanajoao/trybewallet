@@ -1,0 +1,18 @@
+.label-and-select-label {
+  color: #003BE5;
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.label-and-select-select {
+  background-color: transparent;
+  border: 1px solid #003BE5;
+  flex-grow: 1;
+  color: #003BE5;
+  padding: 0.44rem;
+  border-radius: 5px;
+}

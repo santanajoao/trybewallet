@@ -1,17 +1,18 @@
 :root {
-  --header-font-size: 0.875rem;
+  --header-form-width: 81%;
 }
 
 .header {
+  --header-font-size: 0.875rem;
+
   background-color: #fff;
   display: flex;
   align-items: flex-end;
-  padding: 3rem;
-  padding-bottom: 2.5rem;
-  justify-content: space-around;
-  gap: 2rem;
+  padding: 3rem 2.5rem 2.5rem;
+  justify-content: space-evenly;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  width: 81%;
+  width: var(--header-form-width);
 }
 
 .header-trybewallet-logo {

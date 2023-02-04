@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrencies, createExpense, editExpense } from '../redux/actions';
 import LabelAndInput from './LabelAndInput';
 import LabelAndSelect from './LabelAndSelect';
+import '../styles/WalletForm.css';
 
 const methods = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 const categories = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
@@ -50,50 +51,57 @@ class WalletForm extends Component {
     const { value, description, currency, method, tag } = this.state;
     const { currencies, editor } = this.props;
     return (
-      <form onSubmit={ this.handleSubmit } className="WalletForm">
-        <LabelAndInput
-          name="value"
-          labelText="Valor"
-          value={ value }
-          type="number"
-          onChange={ this.handleChange }
-        />
+      <form onSubmit={ this.handleSubmit } className="wallet-form">
+        <div className="wallet-form-inputs">
+          <div className="first-inputs-line-wrapper">
+            <LabelAndInput
+              name="description"
+              labelText="Descrição da despesa"
+              value={ description }
+              type="text"
+              onChange={ this.handleChange }
+            />
 
-        <LabelAndInput
-          name="description"
-          labelText="Descrição"
-          value={ description }
-          type="text"
-          onChange={ this.handleChange }
-        />
+            <LabelAndSelect
+              name="tag"
+              labelText="Categoria da despesa"
+              value={ tag }
+              onChange={ this.handleChange }
+              options={ categories }
+            />
+          </div>
+          <div className="second-inputs-line-wrapper">
+            <LabelAndInput
+              name="value"
+              labelText="Valor"
+              value={ value }
+              type="number"
+              onChange={ this.handleChange }
+            />
 
-        <LabelAndSelect
-          name="currency"
-          labelText="Moeda"
-          value={ currency }
-          onChange={ this.handleChange }
-          options={ currencies }
-        />
+            <LabelAndSelect
+              name="currency"
+              labelText="Moeda"
+              value={ currency }
+              onChange={ this.handleChange }
+              options={ currencies }
+            />
 
-        <LabelAndSelect
-          name="method"
-          labelText="Método de pagamento"
-          value={ method }
-          onChange={ this.handleChange }
-          options={ methods }
-        />
+            <LabelAndSelect
+              name="method"
+              labelText="Método de pagamento"
+              value={ method }
+              onChange={ this.handleChange }
+              options={ methods }
+            />
+          </div>
+        </div>
 
-        <LabelAndSelect
-          name="tag"
-          labelText="Categoria"
-          value={ tag }
-          onChange={ this.handleChange }
-          options={ categories }
-        />
-
-        <button type="submit">
-          { editor ? 'Editar despesa' : 'Adicionar despesa' }
-        </button>
+        <div className="wallet-form-button-wrapper">
+          <button type="submit" className="wallet-form-button">
+            { editor ? 'Editar despesa' : 'Adicionar despesa' }
+          </button>
+        </div>
       </form>
     );
   }

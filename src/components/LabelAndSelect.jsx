@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/LabelAndSelect.css';
 
 export default class LabelAndSelect extends Component {
   render() {
     const { name, labelText, value, onChange, options } = this.props;
     const inputID = `${name}-input`;
     return (
-      <label htmlFor={ inputID }>
+      <label htmlFor={ inputID } className="label-and-select-label">
         { labelText }
         <select
           value={ value }
@@ -14,6 +15,7 @@ export default class LabelAndSelect extends Component {
           name={ name }
           id={ inputID }
           data-testid={ inputID }
+          className="label-and-select-select"
         >
           { options.map((content, index) => (
             <option key={ index } value={ content }>{ content }</option>
