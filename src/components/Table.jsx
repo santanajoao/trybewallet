@@ -3,25 +3,25 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TableRow from './TableRow';
 
+const tableHeadings = [
+  'Descrição', 'Tag', 'Método de pagamento',
+  'Valor', 'Moeda', 'Câmbio Utilizado',
+  'Valor convertido', 'Moeda de conversão', 'Editar/Excluir',
+];
+
 class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <table className="Table">
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
+      <table className="table">
+        <thead className="table-head">
+          <tr className="table-headings-row">
+            { tableHeadings.map((content, index) => (
+              <th key={ index } className="table-heading">{ content }</th>
+            )) }
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-body">
           { expenses.map((expense) => (
             <TableRow
               key={ expense.id }
