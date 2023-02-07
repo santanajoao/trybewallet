@@ -28,6 +28,24 @@ class WalletForm extends Component {
     dispatch(getCurrencies());
   }
 
+  componentDidUpdate({ editor: prevEditor, idToEdit: prevIdToEdit }) {
+    const { editor, idToEdit } = this.props;
+
+    if ((!prevEditor && editor) || (idToEdit !== prevIdToEdit)) {
+      this.fillFormWithEditingData();
+    } else if (prevEditor && !editor) {
+      this.setState(INITIAL_STATE);
+    }
+  }
+
+  fillFormWithEditingData = () => {
+    const { expenses, idToEdit } = this.props;
+    const expenseCopy = { ...expenses[idToEdit] };
+    delete expenseCopy.exchangeRates;
+    delete expenseCopy.id;
+    this.setState(expenseCopy);
+  };
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -111,11 +129,17 @@ WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   editor: PropTypes.bool.isRequired,
+  idToEdit: PropTypes.number.isRequired,
+  expenses: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ).isRequired,
 };
 
 const mapStateToProps = ({ wallet }) => ({
   currencies: wallet.currencies,
   editor: wallet.editor,
+  idToEdit: wallet.idToEdit,
+  expenses: wallet.expenses,
 });
 
 export default connect(mapStateToProps)(WalletForm);

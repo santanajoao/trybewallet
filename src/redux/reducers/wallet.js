@@ -25,6 +25,7 @@ const walletReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter(({ id }) => id !== action.payload),
+      editor: false,
     };
   case EDIT_EXPENSE:
     return {
@@ -34,14 +35,8 @@ const walletReducer = (state = INITIAL_STATE, action) => {
         if (expense.id !== state.idToEdit) {
           return expense;
         }
-        const { value, description, currency, method, tag } = action.payload;
-        const editedExpense = { ...expense };
 
-        editedExpense.value = value;
-        editedExpense.description = description;
-        editedExpense.currency = currency;
-        editedExpense.method = method;
-        editedExpense.tag = tag;
+        const editedExpense = { ...expense, ...action.payload, id: expense.id };
 
         return editedExpense;
       }),
