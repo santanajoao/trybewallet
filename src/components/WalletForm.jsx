@@ -40,7 +40,8 @@ class WalletForm extends Component {
 
   fillFormWithEditingData = () => {
     const { expenses, idToEdit } = this.props;
-    const expenseCopy = { ...expenses[idToEdit] };
+    const targetExpense = expenses.find(({ id }) => id === idToEdit);
+    const expenseCopy = { ...targetExpense };
     delete expenseCopy.exchangeRates;
     delete expenseCopy.id;
     this.setState(expenseCopy);

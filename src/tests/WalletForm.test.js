@@ -11,20 +11,20 @@ describe('WalletForm', () => {
     userEvent.type(screen.getByPlaceholderText('Senha'), '123456');
     userEvent.click(screen.getByRole('button', { name: 'Entrar' }));
 
-    const descriptionInput = screen.getByRole('textbox', { name: 'Descrição' });
+    const descriptionInput = screen.getByRole('textbox', { name: 'Descrição da despesa' });
 
     const firstDescription = 'descrição 1';
     userEvent.type(descriptionInput, firstDescription);
     userEvent.click(screen.getByRole('button', { name: 'Adicionar despesa' }));
     await screen.findByText(firstDescription);
 
-    userEvent.click(screen.getByRole('button', { name: 'Editar' }));
+    userEvent.click(screen.getByTestId('edit-btn'));
 
     const secondDescription = 'descrição 2';
     userEvent.type(descriptionInput, secondDescription);
     userEvent.click(screen.getByRole('button', { name: 'Editar despesa' }));
 
     expect(screen.queryByText(firstDescription)).not.toBeInTheDocument();
-    screen.getByText(secondDescription);
+    screen.getByText(firstDescription + secondDescription);
   });
 });

@@ -10,7 +10,7 @@ it('ao editar uma expense apenas a expense de id selecionado é editada', async 
   userEvent.type(screen.getByPlaceholderText('Senha'), '123456');
   userEvent.click(screen.getByRole('button', { name: 'Entrar' }));
 
-  const descriptionInput = screen.getByRole('textbox', { name: 'Descrição' });
+  const descriptionInput = screen.getByRole('textbox', { name: 'Descrição da despesa' });
 
   const addExpenseButton = screen.getByRole('button', { name: 'Adicionar despesa' });
 
@@ -27,16 +27,16 @@ it('ao editar uma expense apenas a expense de id selecionado é editada', async 
   await screen.findByText(descricao1);
   await screen.findByText(descricao2);
 
-  const editButtons = await screen.findAllByRole('button', { name: 'Editar' });
+  const editButtons = await screen.findAllByTestId('edit-btn');
   userEvent.click(editButtons[0]);
 
   userEvent.type(descriptionInput, descricao3);
   userEvent.click(screen.getByRole('button', { name: 'Editar despesa' }));
 
-  await screen.findByText(descricao3);
+  await screen.findByText(descricao1 + descricao3);
 
   const { wallet } = store.getState();
   const { expenses } = wallet;
-  expect(expenses[0].description).toBe(descricao3);
+  expect(expenses[0].description).toBe(descricao1 + descricao3);
   expect(expenses[1].description).toBe(descricao2);
 });

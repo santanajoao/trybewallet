@@ -15,8 +15,8 @@ describe('TableRow', () => {
 
     expect(screen.queryByRole('button', { name: 'Editar despesa' })).not.toBeInTheDocument();
 
-    const editButton = await screen.findByRole('button', { name: 'Editar' });
-    userEvent.click(editButton);
+    await screen.findByText('Dólar Americano/Real Brasileiro');
+    userEvent.click(screen.getByTestId('edit-btn'));
 
     screen.getByRole('button', { name: 'Editar despesa' });
   });
@@ -31,9 +31,9 @@ describe('TableRow', () => {
 
     userEvent.click(screen.getByRole('button', { name: 'Adicionar despesa' }));
 
-    await screen.findAllByText(description);
+    await screen.findByText(description);
 
-    userEvent.click(screen.getByRole('button', { name: 'Excluir' }));
+    userEvent.click(screen.getByTestId('delete-btn'));
 
     expect(screen.queryByText(description)).not.toBeInTheDocument();
   });

@@ -6,7 +6,7 @@ import '../styles/Table.css';
 
 const tableHeadings = [
   'Descrição', 'Tag', 'Método de pagamento',
-  'Valor', 'Moeda', 'Câmbio Utilizado',
+  'Valor', 'Moeda', 'Câmbio utilizado',
   'Valor convertido', 'Moeda de conversão', 'Editar/Excluir',
 ];
 
