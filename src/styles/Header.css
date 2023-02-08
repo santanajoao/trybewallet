@@ -1,60 +1,60 @@
 :root {
+
   --header-form-width: 81%;
 }
 
 .header {
-  --header-font-size: 0.875rem;
 
-  background-color: #fff;
-  display: flex;
+  --header-font-size: 0.875rem;
   align-items: flex-end;
-  padding: 3rem 2.5rem 2.5rem;
-  justify-content: space-evenly;
-  gap: 1.5rem;
+  background-color: white;
+  display: flex;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-evenly;
+  padding: 3rem 2.5rem 2.5rem;
   width: var(--header-form-width);
 }
 
 .header-trybewallet-logo {
-  width: 15.636rem;
   height: 3.268rem;
+  width: 15.636rem;
 }
 
 .header-expense-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 0.5rem;
 }
 
 .header-expense-icon {
-  width: 1.794rem;
   height: 1.794rem;
+  width: 1.794rem;
 }
 
 .header-expense-text {
-  color: #003BE5;
+  color: #003be5;
   font-size: var(--header-font-size);
   font-weight: 600;
 }
 
-.header-expense-value,
-.header-expense-currency {
+.header-expense-value , .header-expense-currency {
   font-weight: 400;
 }
 
 .header-email-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 0.5rem;
 }
 
 .header-email-icon {
-  width: 1.794rem;
   height: 1.794rem;
+  width: 1.794rem;
 }
 
 .header-email {
+  color: #2fc18c;
   font-size: var(--header-font-size);
   font-weight: 600;
-  color: #2FC18C;
 }

@@ -1,9 +1,9 @@
 .table {
-  width: 90.23%;
-  background-color: #003BE5;
+  background-color: #003be5;
   border-collapse: collapse;
   border-radius: 10px 10px 0 0;
   margin-bottom: 3rem;
+  width: 90.23%;
 }
 
 .table tr {
@@ -15,26 +15,26 @@
 }
 
 .table th {
-  width: 6.937rem;
-  font-size: 0.875rem;
   color: white;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 1rem;
+  width: 6.937rem;
 }
 
-.table th:not(:first-of-type) {
+.table th:not( :first-of-type ) {
   border-left: 1px solid white;
 }
 
 .table td {
-  width: 6.937rem;
-  text-align: center;
+  color: #09ebdf;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #09ebdf;
   padding: 1rem;
+  text-align: center;
+  width: 6.937rem;
 }
 
-.table-row:not(:last-of-type) {
+.table-row:not( :last-of-type ) {
   border-bottom: 1px solid #09ebdf;
 }

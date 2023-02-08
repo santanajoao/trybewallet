@@ -1,48 +1,47 @@
 .wallet-form {
-  width: var(--header-form-width);
-  background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 0 0 10px 10px;
   box-shadow: -4px 9px 13px rgba(5, 18, 54, 0.4);
+  display: flex;
+  flex-direction: column;
   position: relative;
+  width: var(--header-form-width);
   z-index: 2;
 }
 
 .wallet-form-inputs {
-  width: 80%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
+  width: 80%;
 }
 
-.first-inputs-line-wrapper,
-.second-inputs-line-wrapper {
+.first-inputs-line-wrapper , .second-inputs-line-wrapper {
   display: flex;
-  width: 100%;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
 }
 
 .wallet-form-button-wrapper {
   background-color: white;
-  width: 100%;
+  border-radius: 0 0 10px 10px;
   display: flex;
   justify-content: center;
   padding: 2rem;
-  border-radius: 0 0 10px 10px;
+  width: 100%;
 }
 
 .wallet-form-button {
+  background-color: #2fc18c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  color: white;
-  background-color: #2FC18C;
-  border-radius: 5px;
-  width: 31.8%;
-  border: none;
   padding: 0.815rem;
-  cursor: pointer;
+  width: 31.8%;
 }

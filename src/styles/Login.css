@@ -1,6 +1,9 @@
 :root {
-  --login-blue: #003BE5;
-  --login-green: #2FC18C;
+
+  --login-blue: #003be5;
+
+  --login-green: #2fc18c;
+
   --form-font-size: 0.875rem;
 }
 
@@ -17,13 +20,13 @@
 
 .login-form-and-logo-wrapper {
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
-  justify-content: center;
   height: 22.26rem;
+  justify-content: center;
   width: 32.812rem;
 }
 
@@ -64,7 +67,7 @@
   background-color: var(--login-blue);
   border: none;
   border-radius: 5px;
-  color: #fff;
+  color: white;
   cursor: pointer;
   font-size: var(--login-font-size);
   font-weight: 700;

@@ -3,3 +3,4 @@ src/tests
 src/serviceWorker.js
 cypress
 coverage
+build
